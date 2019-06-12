@@ -1,0 +1,25 @@
+.Form{
+    margin-left:100px;
+}
+.Input{
+margin-left:100px;
+}
+.Button{
+    margin-left:100px;
+ 
+}
+.Input1{
+    margin-left:100px;
+}
+.main{
+    margin-left:200px;
+    font-size: 150%;
+    color:rgb(56, 87, 170);
+   
+}
+.errorMsg {
+    color: #cc0000;
+    margin-left:100px;
+  }
+  
+ 

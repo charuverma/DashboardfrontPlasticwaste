@@ -1,0 +1,21 @@
+.table{
+    margin-right: 500px;
+    margin-left:40px;
+ }
+.Footer{
+    position:fixed;
+    width:950px;
+}
+.Header{
+    position:fixed;
+    width:950px;
+}
+.Drop{
+    margin-top:20px;
+}
+.Drop1{
+    margin-top:10px;
+}
+.copy{
+    float: center;
+}

@@ -1,11 +1,21 @@
 {
-  "name": "formapp",
+  "name": "registerform",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "mdbreact": "^4.15.0",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-bootstrap-sidebar": "0.0.1",
+    "react-burger-menu": "^2.6.10",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-router-dom": "4.2.2",
+    "react-scripts": "3.0.1",
+    "react-sidebar": "^3.0.2",
+    "reactstrap": "^8.0.0",
+    "universal-cookie": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
