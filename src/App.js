@@ -12,62 +12,52 @@ import "../src/style/material-dashboard.css";
 import "../src/style/demo.css";
 import login from "./component/login";
 import register from "./component/register";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 class MainContainer extends React.Component {
-	render() { if(!login.status){
-		return(
-		<div><Route path="/login" component={login} />
-			<Route path ="/register" component={register} />
-		
-		</div>
-		)
-	} 
-	else{ 
-		return (
-			<div>
-        <div className='wrapper'>
-          <Header />
-          <Sidebar />
-          <div className='main-panel'>
-				<Switch>
-            
-						<Route path ="/register" component={register} />
-						<Route path="/productform" component={productform} />
-						<Route
-						path="/productlist/edit/:id"
-						component={productform}
-					/>
-						<Route path="/productlist" component={productlist} />
-						<Route path="/registerform" component={registerform} /> 
-						<Route
-						path="/registerlist/edit/:id"
-						component={registerform}
-					/>
-						<Route path="/registerlist" component={registerlist} />
-            <Route path="/" component={Dashboard} />
-				</Switch>
-				
-         	 </div>
+  render() {
+    if (!cookies.get('emailid') || cookies.get('emailid') === '') {
+      return (
+        <div>
+          <Route path="/login" component={login} />
+          <Route path="/register" component={register} />
         </div>
-			<div>
-					<Footer />
-				</div>
-			</div>
-	
-		);}
-	}
-	
-	
+      );
+    } else {
+      return (
+        <div>
+          <div className="wrapper">
+            <Header />
+            <Sidebar />
+            <div className="main-panel">
+              <Switch>
+                <Route path="/productform" component={productform} />
+                <Route path="/productlist/edit/:id" component={productform} />
+                <Route path="/productlist" component={productlist} />
+                <Route path="/registerform" component={registerform} />
+                <Route path="/registerlist/edit/:id" component={registerform} />
+                <Route path="/registerlist" component={registerlist} />
+                <Route path="/" component={Dashboard} />
+              </Switch>
+            </div>
+          </div>
+          <div>
+            <Footer />
+          </div>
+        </div>
+      );
+    }
+  }
 }
 
 class App extends React.Component {
-	render() {
-		return (
-			<Router>
-				<MainContainer />
-				
-			</Router>
-		);
-	}
+  render() {
+    return (
+      <Router>
+        <MainContainer />
+      </Router>
+    );
+  }
 }
 export default App;

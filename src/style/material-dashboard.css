@@ -2151,17 +2151,15 @@ pre code {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 132%;
   padding: 0.4375rem 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #495057;
+  color: black;
   background-color: rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-  border: 1px solid #d2d2d2;
+  border: 1px solid gray;
   border-radius: 0;
-  box-shadow: none;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ 
 }
 
 .form-control::-ms-expand {
@@ -2172,13 +2170,13 @@ pre code {
 .form-control:focus {
   color: #495057;
   background-color: rgba(0, 0, 0, 0);
-  border-color: #9acffa;
+  border-color: black;
   outline: 0;
-  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+ 
 }
 
 .form-control::placeholder {
-  color: #6c757d;
+  color: black;
   opacity: 1;
 }
 
@@ -10631,6 +10629,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
   font-size: 0.875rem;
   line-height: 1.333333;
   border-radius: 0.2rem;
+  height: 46px;
 }
 
 .btn.btn-sm,

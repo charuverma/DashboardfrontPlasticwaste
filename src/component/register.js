@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "../style/material-dashboard.css";
 import "../style/demo.css";
+import "../style/regsiter.css";
 import { Col, Button, Form, FormGroup, Label, Input, Row } from "reactstrap";
 
 class register extends React.Component {
@@ -20,7 +21,8 @@ class register extends React.Component {
 
   handleChange(e) {
     let fields = this.state.fields;
-    fields[e.target.name] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    fields[e.target.name] =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({
       fields
     });
@@ -29,7 +31,6 @@ class register extends React.Component {
   async submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
-      console.log("Welcome");
       let fields = {};
       fields["username"] = "";
       console.log(this.state.fields.username);
@@ -57,9 +58,8 @@ class register extends React.Component {
       }
     };
     await axios(options);
-alert("Register Successfully");
-console.log(this.state.fields.status);
-console.log(this.state.fields.username);
+   /*  alert("Register Successfully"); */
+  ;
     //------------------
   }
 
@@ -113,9 +113,13 @@ console.log(this.state.fields.username);
     }
 
     if (typeof fields["password"] !== "undefined") {
-      if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
-        formIsValid = false; 
-       errors["password"] = "*Please enter secure and strong password."; 
+      if (
+        !fields["password"].match(
+          /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/
+        )
+      ) {
+        formIsValid = false;
+        errors["password"] = "*Please enter secure and strong password.";
       }
     }
 
@@ -149,105 +153,106 @@ console.log(this.state.fields.username);
   render() {
     return (
       <Form className="Form" onSubmit={this.submituserRegistrationForm}>
-      <p className="main">
-        {" "}
-        <h3>Registration Form</h3>
-      </p>
-      <Row>
-        <Col md={4}>
-          <FormGroup>
-            <Label className="Input">username</Label>
-            <Input
-              className="Input"
-              type="text"
-              name="username"
-              value={this.state.fields.username || ""}
-              onChange={this.handleChange}
-            />
-            <div className="errorMsg">
-              {this.state.errors.username}
-            </div>
-          </FormGroup>
-        </Col>
-        <Col md={4}>
-						<FormGroup>
-							<Label className="Input">Email</Label>
-							<Input
-         
+        <p className="main">
+          {" "}
+          <b>Registration Form</b>
+        </p>
+        <Row>
+          <Col md={3}>
+            <FormGroup>
+              <Label className="Input">Username</Label>
+              <Input
+                className="Input"
+                type="text"
+                name="username"
+                value={this.state.fields.username || ""}
+                onChange={this.handleChange}
+              />
+              <div className="errorMsg">{this.state.errors.username}</div>
+            </FormGroup>
+          </Col>
+          <Col md={3}>
+            <FormGroup>
+              <Label className="Input">Email</Label>
+              <Input
                 type="text"
                 className="Input"
                 name="emailid"
                 value={this.state.fields.emailid || ""}
                 onChange={this.handleChange}
-							/>
-							<div className="errorMsg">
-								{this.state.errors.emailid}
-							</div>
-						</FormGroup>
-					</Col>
-          </Row>
-          <Row>
-					<Col md={4}>
-						<FormGroup>
-							<Label className="Input">MobileNo</Label>
-							<Input
-               className="Input"
-							type="text"
-              name="mobileno"
-              value={this.state.fields.mobileno || ""}
-              onChange={this.handleChange}
-							/>
-							<div className="errorMsg">
-								{this.state.errors.mobileno}
-							</div>
-						</FormGroup>
-					</Col>
-					<Col md={4}>
-						<FormGroup>
-							<Label className="Input">Password</Label>
-							<Input
-                 type="password"
-                 className="Input"
-                 name="password"
-                 value={this.state.fields.password || ""}
-                 onChange={this.handleChange}
-							/>
-							<div className="errorMsg">
-								{this.state.errors.password}
-							</div>
-						</FormGroup>
-					</Col>
-				</Row>
+              />
+              <div className="errorMsg">{this.state.errors.emailid}</div>
+            </FormGroup>
+          </Col>
+        </Row>
         <Row>
-					<Col md={6}>
-          <FormGroup>
-							<Label className="Input">Checkbox</Label>
-							<Input
-                 type="checkbox"
-                 className="Input"
-                 name="status"
-                 checked={this.state.fields.status}
-                 onChange={this.handleChange}
-							/>
-							<div className="errorMsg">
-								{this.state.errors.checkbox}
-							</div>
-						</FormGroup>
-					</Col>
-				</Row>
+          <Col md={3}>
+            <FormGroup>
+              <Label className="Input">MobileNo</Label>
+              <Input
+                className="Input"
+                type="text"
+                name="mobileno"
+                value={this.state.fields.mobileno || ""}
+                onChange={this.handleChange}
+              />
+              <div className="errorMsg">{this.state.errors.mobileno}</div>
+            </FormGroup>
+          </Col>
+          <Col md={3}>
+            <FormGroup>
+              <Label className="Input">Password</Label>
+              <Input
+                type="password"
+                className="Input"
+                name="password"
+                value={this.state.fields.password || ""}
+                onChange={this.handleChange}
+              />
+              <div className="errorMsg">{this.state.errors.password}</div>
+            </FormGroup>
+          </Col>
+        </Row>
         <Row>
-					<Col md={8}>
-						<Button
-							color="primary"
-							size="lg"
-							block
-							className="Button"
-							type="submit"
-						>Register
-						</Button>
-					</Col>
-				</Row>
-</Form>
+          <Col md={6}>
+            <FormGroup>
+              <Label className="Input">Checkbox</Label>
+              <Input
+                type="checkbox"
+                className="Input"
+                name="status"
+                checked={this.state.fields.status}
+                onChange={this.handleChange}
+              />
+              <div className="errorMsg">{this.state.errors.checkbox}</div>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={3}>
+            <Button
+              color="primary"
+              size="lg"
+              block
+              className="Button"
+              type="submit"
+            >
+              Register
+            </Button>
+          </Col>
+          <Col md={3}>
+            <Button
+              color="primary"
+              size="lg"
+              block
+              className="Button"
+              href="./login"
+            >
+              Back to Login
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }

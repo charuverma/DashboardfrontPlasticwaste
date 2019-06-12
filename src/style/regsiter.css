@@ -1,6 +1,10 @@
-Form{
+.Form{
     margin-top:100px;
-    margin-left: 80px;
+    margin-left: 266px;
+}
+.loginform{
+    margin-top: 100px;
+    margin-left: 200px;
 }
 .Input{
 margin-left:100px;
@@ -13,7 +17,13 @@ margin-left:100px;
     margin-left:100px;
 }
 .main{
-    margin-left:200px;
+    margin-left:230px;
+    font-size: 150%;
+    color:black
+   
+}
+.login{
+    margin-left:221px;
     font-size: 150%;
     color:black;
    
@@ -22,7 +32,5 @@ margin-left:100px;
     color: #cc0000;
     margin-left:100px;
   }
-  .select{
-      margin-left:110px;
-}
+  
  

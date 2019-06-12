@@ -1,18 +1,25 @@
 import React from "react";
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
-export default props => {
-	return (
-		<Navbar bg="light" variant="light">
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
- {/*      <Nav.Link href="./registerform">Add Customer</Nav.Link>
-      <Nav.Link href="./productform">Add Product</Nav.Link> */}
-       < Button href="/login" >Logout</Button>
-    </Nav>
-  </Navbar>
-	);
+export default class register extends React.Component {
+  logout() {
+    cookies.remove('emailid');
+    window.location.href = '/login';
+  }
+
+  render(){
+    return (
+      <Navbar bg="light" variant="light">
+        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="#home">Home</Nav.Link>
+          <Button onClick={this.logout}>Logout</Button>
+        </Nav>
+      </Navbar>
+    );
+  }
 };
