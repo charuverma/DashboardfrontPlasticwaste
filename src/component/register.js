@@ -27,7 +27,6 @@ class register extends React.Component {
       fields
     });
   }
-
   async submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
@@ -43,13 +42,15 @@ class register extends React.Component {
       fields["status"] = "";
       console.log(this.state.fields.status);
       this.setState({ fields: fields });
+      alert("Register Sucessfully");
+      console.log(this.state.field);
     }
     //----------------------save api-------------------
     var options = {
       method: "POST",
       url: "http://localhost:8000/register/save",
       data: {
-        id: this.state.fields.id || null,
+        id: this.state.fields.id,
         username: this.state.fields.username,
         emailid: this.state.fields.emailid,
         mobileno: this.state.fields.mobileno,
@@ -58,8 +59,6 @@ class register extends React.Component {
       }
     };
     await axios(options);
-   /*  alert("Register Successfully"); */
-  ;
     //------------------
   }
 
@@ -112,7 +111,7 @@ class register extends React.Component {
       errors["password"] = "*Please enter your password.";
     }
 
-    if (typeof fields["password"] !== "undefined") {
+   /*  if (typeof fields["password"] !== "undefined") {
       if (
         !fields["password"].match(
           /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/
@@ -121,7 +120,7 @@ class register extends React.Component {
         formIsValid = false;
         errors["password"] = "*Please enter secure and strong password.";
       }
-    }
+    } */
 
     this.setState({
       errors: errors

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Button, Form, FormGroup, Label, Input, Row } from "reactstrap";
+import { Col, Button, Form, FormGroup, Label, Input, Row} from "reactstrap";
 import axios from "axios";
 import "../style/material-dashboard.css";
 import "../style/demo.css";
@@ -9,7 +9,8 @@ class registerform extends React.Component {
     super();
     this.state = {
       field: {},
-      errors: {}
+      errors: {},
+      data:[]
     };
     this.handlechange = this.handlechange.bind(this);
     this.submit = this.submit.bind(this);
@@ -17,7 +18,6 @@ class registerform extends React.Component {
   handlechange(e) {
     let field = this.state.field;
     field[e.target.name] = e.target.value;
-    console.log(e.target);
     this.setState({
       field
     });
@@ -41,7 +41,6 @@ class registerform extends React.Component {
       field["Address"] = "";
       this.setState({ field: field });
       alert("Register Sucessfully");
-      console.log(this.state.field);
     }
     var options = {
       method: "POST",
@@ -224,6 +223,17 @@ class registerform extends React.Component {
     return formIsValid;
   }
   async componentDidMount() {
+    var option = {
+      method: "POST",
+      url:  "http://localhost:8000/index/list",
+      data: {}
+    };
+    const {data} = await axios(option);
+    this.setState({
+      data: data.result
+     
+    });
+
     if (this.props.match.params.id) {
       var options = {
         method: "POST",
@@ -252,15 +262,26 @@ class registerform extends React.Component {
         }
       });
     }
+   
   }
 
   render() {
     return (
-      <Form className="Form" onSubmit={this.submit}>
+      <Form className="Employee" onSubmit={this.submit}>
         <p className="main">
           {" "}
           <h3>Registration Form</h3>
         </p>
+        <Row>
+        <Col md={4}>
+            <FormGroup>
+             <Input type="select" >
+               {this.state.data.map(item =>( 
+              <option key={item.id} value={item.id}>{item.ProductName}</option>))}; 
+             </Input>
+            </FormGroup>
+          </Col>
+          </Row>
         <Row>
           <Col md={4}>
             <FormGroup>

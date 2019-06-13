@@ -68,7 +68,6 @@ class login extends React.Component {
     } else {
       alert("Login Successfully");
       cookies.set("emailid", this.state.field.emailid);
-
       window.location.href = "/";
     }
   }
@@ -79,6 +78,7 @@ class login extends React.Component {
         <Form className="loginform" onSubmit={this.submit}>
           <Row>
             <Col xs={6} md={4}>
+           
             </Col>
           </Row>
           <p className="login">

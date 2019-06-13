@@ -127,7 +127,7 @@ class productform extends React.Component {
   render() {
     return (
       <Container>
-        <Form className="Form" onSubmit={this.submit}>
+        <Form className="product" onSubmit={this.submit}>
           <p className="main">
             {" "}
             <h3>Registration Form</h3>

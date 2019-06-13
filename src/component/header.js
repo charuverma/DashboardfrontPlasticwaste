@@ -10,7 +10,6 @@ export default class register extends React.Component {
     cookies.remove('emailid');
     window.location.href = '/login';
   }
-
   render(){
     return (
       <Navbar bg="light" variant="light">

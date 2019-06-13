@@ -5,20 +5,25 @@ import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import Pagination from 'react-bootstrap/Pagination';
 
 class registerlist extends React.Component {
   state = {
-    data: []
+    data: [],
+    currentPage:0,
+    pageCount:0
   };
   async componentDidMount() {
     var options = {
       method: "POST",
-      url: "http://localhost:8000/post/list",
+      url: "http://localhost:8000/post/list1",
       data: {}
     };
     const { data } = await axios(options);
     this.setState({
-      data: data.result
+      data: data.data,
+      currentPage: data.currentPage,
+      pageCount: data.pageCount
     });
   }
   async delete(id) {
@@ -32,7 +37,7 @@ class registerlist extends React.Component {
       data: this.state.data.filter(item => item.id !== id)
     });
   }
-  render() {
+  render(){
     return (
       <div>
         <Row>
@@ -95,8 +100,23 @@ class registerlist extends React.Component {
             </tbody>
           </Table>
         </Row>
+        {this.renderPaging()}
       </div>
     );
+  }
+
+  renderPaging(){
+    const items = [];
+    for (let number = 1; number <= this.state.pageCount; number++) {
+      items.push(
+        <Pagination.Item key={number} active={number === this.state.currentPage}>
+          {number}
+        </Pagination.Item>,
+      );
+    }
+    return(
+      <Pagination bsPrefix="list-pagination">{items}</Pagination>
+    ) 
   }
 }
 

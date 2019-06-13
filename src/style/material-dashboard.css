@@ -4833,7 +4833,7 @@ tbody.collapse.show {
   color: #6c757d;
 }
 
-.pagination {
+.list-pagination {
   display: flex;
   padding-left: 0;
   list-style: none;
@@ -4882,8 +4882,10 @@ tbody.collapse.show {
 .page-item.active .page-link {
   z-index: 1;
   color: #ffffff;
-  background-color: #2196f3;
-  border-color: #2196f3;
+  background-color: #9c27b0 !important;
+  border-color: #9c27b0 !important;
+  margin-left:892px !important;
+  margin-top:8px !important;
 }
 
 .page-item.disabled .page-link {
@@ -13127,7 +13129,7 @@ fieldset[disabled] .form-group .form-control {
 .navbar .navbar-nav .nav-item .btn {
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 599px;
+  margin-left: 788px;
   background-color: #9c27b0;
     border-color: #9c27b0;
 }
@@ -14379,9 +14381,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   padding: 0.9375rem 0;
   text-align: center;
   display: -webkit-flex;
-  /* Safari */
-  /* Safari 6.1+ */
   display: flex;
+  margin-top: 423px;
 }
 
 .footer ul {
