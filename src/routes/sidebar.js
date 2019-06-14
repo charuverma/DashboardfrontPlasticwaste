@@ -23,8 +23,8 @@ export default props => {
           </li>
 
           <li className="nav-item ">
-            <a className="nav-link" href="./map.html">
-              <p>Maps</p>
+            <a className="nav-link" href="/categorylist">
+              <p>CategoryList</p>
             </a>
           </li>
           <li className="nav-item ">

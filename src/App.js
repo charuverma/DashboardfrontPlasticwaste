@@ -4,10 +4,12 @@ import productform from "./component/productform";
 import productlist from "./component/productlist";
 import registerlist from "./component/registerlist";
 import registerform from "./component/registerform";
-import Header from "./component/header";
-import Sidebar from "./component/sidebar";
-import Footer from "./component/footer";
+import category from "./component/category";
+import Header from "./routes/header";
+import Sidebar from "./routes/sidebar";
+import Footer from "./routes/footer";
 import Dashboard from "./routes/Dashboard";
+import categorylist from './component/categorylist';
 import "../src/style/material-dashboard.css";
 import "../src/style/demo.css";
 import login from "./component/login";
@@ -38,6 +40,8 @@ class MainContainer extends React.Component {
                 <Route path="/registerform" component={registerform} />
                 <Route path="/registerlist/edit/:id" component={registerform} />
                 <Route path="/registerlist" component={registerlist} />
+                <Route path="/category" component={category} />
+                <Route path="/categorylist" component={categorylist} />
                 <Route path="/" component={Dashboard} />
               </Switch>
             </div>

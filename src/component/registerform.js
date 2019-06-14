@@ -22,10 +22,11 @@ class registerform extends React.Component {
       field
     });
   }
-  submit(e) {
+ async submit(e) {
     e.preventDefault();
     if (this.validateForm()) {
       let field = {};
+      field["Size"] = "";
       field["firstname"] = "";
       field["Lastname"] = "";
       field["emailid"] = "";
@@ -41,12 +42,14 @@ class registerform extends React.Component {
       field["Address"] = "";
       this.setState({ field: field });
       alert("Register Sucessfully");
+      window.location.href="/registerlist";
     }
-    var options = {
+   var options = {
       method: "POST",
       url: "http://localhost:8000/post/save",
       data: {
         id: this.state.field.id || null,
+        Size: this.state.field.Size,
         firstname: this.state.field.firstname,
         Lastname: this.state.field.Lastname,
         emailid: this.state.field.emailid,
@@ -62,7 +65,7 @@ class registerform extends React.Component {
         Address: this.state.field.Address
       }
     };
-    const data = axios(options);
+    const data = await axios(options);
     console.log(data);
   }
   validateForm() {
@@ -74,149 +77,55 @@ class registerform extends React.Component {
       formIsValid = false;
       errors["firstname"] = "*Please enter your firstname.";
     }
-
-    if (typeof field["firstname"] !== "undefined") {
-      if (!field["firstname"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["firstname"] = "*Please enter alphabet characters only.";
-      }
-    }
     if (!field["Lastname"]) {
       formIsValid = false;
       errors["Lastname"] = "*Please enter your Lastname.";
-    }
-
-    if (typeof field["Lastname"] !== "undefined") {
-      if (!field["Lastname"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["Lastname"] = "*Please enter alphabet characters only.";
-      }
     }
     if (!field["emailid"]) {
       formIsValid = false;
       errors["emailid"] = "*Please enter your email-ID.";
     }
 
-    if (typeof field["emailid"] !== "undefined") {
-      var pattern = new RegExp(
-        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-      );
-      if (!pattern.test(field["emailid"])) {
-        formIsValid = false;
-        errors["emailid"] = "*Please enter valid email-ID.";
-      }
-    }
     if (!field["BusinessProfile"]) {
       formIsValid = false;
       errors["BusinessProfile"] = "*Please enter your Business Profile.";
-    }
-
-    if (typeof field["BusinessProfile"] !== "undefined") {
-      if (!field["BusinessProfile"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["BusinessProfile"] = "*Please enter alphabet characters only.";
-      }
     }
     if (!field["CompanyName"]) {
       formIsValid = false;
       errors["CompanyName"] = "*Please enter your Company Name.";
     }
-
-    if (typeof field["CompanyName"] !== "undefined") {
-      if (!field["CompanyName"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["CompanyName"] = "*Please enter alphabet characters only.";
-      }
-    }
     if (!field["JobTitle"]) {
       formIsValid = false;
       errors["JobTitle"] = "*Please enter your JobTitle.";
-    }
-
-    if (typeof field["JobTitle"] !== "undefined") {
-      if (!field["JobTitle"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["JobTitle"] = "*Please enter alphabet characters only.";
-      }
     }
     if (!field["street"]) {
       formIsValid = false;
       errors["street"] = "*Please enter your street.";
     }
-
-    if (typeof field["street"] !== "undefined") {
-      if (!field["street"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["street"] = "*Please enter alphabet characters only.";
-      }
-    }
     if (!field["city"]) {
       formIsValid = false;
       errors["city"] = "*Please enter your city.";
-    }
-
-    if (typeof field["city"] !== "undefined") {
-      if (!field["city"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["city"] = "*Please enter alphabet characters only.";
-      }
     }
     if (!field["State"]) {
       formIsValid = false;
       errors["State"] = "*Please enter your State.";
     }
-
-    if (typeof field["State"] !== "undefined") {
-      if (!field["State"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["State"] = "*Please enter alphabet characters only.";
-      }
-    }
     if (!field["zip"]) {
       formIsValid = false;
       errors["zip"] = "*Please enter your zipcode.";
-    }
-
-    if (typeof field["zip"] !== "undefined") {
-      if (!field["zip"].match(/^[0-9]{6}$/)) {
-        formIsValid = false;
-        errors["zip"] = "*Please enter valid zip code.";
-      }
     }
     if (!field["Country"]) {
       formIsValid = false;
       errors["Country"] = "*Please enter your Country.";
     }
-
-    if (typeof field["Country"] !== "undefined") {
-      if (!field["Country"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["Country"] = "*Please enter alphabet characters only.";
-      }
-    }
     if (!field["MobileNo"]) {
       formIsValid = false;
       errors["MobileNo"] = "*Please enter your mobile no.";
-    }
-
-    if (typeof field["MobileNo"] !== "undefined") {
-      if (!field["MobileNo"].match(/^[0-9]{10}$/)) {
-        formIsValid = false;
-        errors["MobileNo"] = "*Please enter valid mobile no.";
-      }
     }
     if (!field["Address"]) {
       formIsValid = false;
       errors["Address"] = "*Please enter your Address.";
     }
-
-    if (typeof field["Address"] !== "undefined") {
-      if (!field["Address"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["Address"] = "*Please enter alphabet characters only.";
-      }
-    }
-
     this.setState({
       errors: errors
     });
@@ -273,11 +182,15 @@ class registerform extends React.Component {
           <h3>Registration Form</h3>
         </p>
         <Row>
-        <Col md={4}>
+        <Col md={8}>
             <FormGroup>
-             <Input type="select" >
-               {this.state.data.map(item =>( 
-              <option key={item.id} value={item.id}>{item.ProductName}</option>))}; 
+             <Input type="select" name="Size"
+                className="Input"
+                value={this.state.field.Size || ""}
+                onChange={this.handlechange}>
+                {this.state.data.map(item =>( 
+                <option key={item.id} value={item.ProductName}>
+                {item.ProductName}</option>))}; 
              </Input>
             </FormGroup>
           </Col>

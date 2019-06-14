@@ -76,12 +76,8 @@ class login extends React.Component {
     return (
       <Container>
         <Form className="loginform" onSubmit={this.submit}>
-          <Row>
-            <Col xs={6} md={4}>
-           
-            </Col>
-          </Row>
-          <p className="login">
+           <img src="./367-3670153_user-login-gif-images-for-login.png"></img>
+           <p className="login">
             {" "}
             <b>Login Form</b>
           </p>

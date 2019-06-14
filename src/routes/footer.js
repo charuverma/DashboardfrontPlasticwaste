@@ -6,7 +6,7 @@ export default props => {
         <div className="copyright float-right">
           &copy;
           <script>document.write(new Date().getFullYear())</script>,made with by
-          <a href="https://www.creative-tim.com" target="_blank">
+          <a href="/" target="_blank">
             Creative Tim
           </a>
           for a better web.

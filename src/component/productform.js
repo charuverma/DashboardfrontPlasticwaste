@@ -44,6 +44,7 @@ class productform extends React.Component {
       field["File"] = "";
       this.setState({ field: field });
       alert("Product added");
+      window.location.href="/productlist";
     }
     const formdata = new FormData(e.target);
     var options = {
@@ -65,35 +66,33 @@ class productform extends React.Component {
       formIsValid = false;
       errors["ProductName"] = "*Please enter your Product Name.";
     }
-    if (typeof field["ProductName"] !== "undefined") {
-      if (!field["ProductName"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["ProductName"] = "*Please enter alphabet characters only.";
-      }
-    }
-    if (!field["ProductType"]) {
+   if (!field["ProductType"]) {
       formIsValid = false;
       errors["ProductType"] = "*Please enter your Product Type.";
-    }
-    if (typeof field["ProductType"] !== "undefined") {
-      if (!field["ProductType"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["ProductType"] = "*Please enter alphabet characters only.";
-      }
     }
     if (!field["Country"]) {
       formIsValid = false;
       errors["Country"] = "*Please enter your Country.";
     }
-    if (typeof field["Country"] !== "undefined") {
-      if (!field["Country"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["Country"] = "*Please enter alphabet characters only.";
-      }
-    }
     if (!field["Price"]) {
       formIsValid = false;
       errors["Price"] = "*Please enter your Price .";
+    }
+    if (!field["ManufacturingDate"]) {
+      formIsValid = false;
+      errors["ManufacturingDate"] = "*Please fill the product name.";
+    }
+    if (!field["ExpireyDate"]) {
+      formIsValid = false;
+      errors["ExpireyDate"] = "*Please fill the product name.";
+    }
+    if (!field["Size"]) {
+      formIsValid = false;
+      errors["Size"] = "*Please Select the product size.";
+    }
+    if (!field["File"]) {
+      formIsValid = false;
+      errors["File"] = "*Please Select the file.";
     }
     this.setState({
       errors: errors
@@ -198,6 +197,7 @@ class productform extends React.Component {
                   name="ManufacturingDate"
                   value={this.state.field.ManufacturingDate || ""}
                   onChange={this.handlechange}
+                  disabled={!this.state.field.ProductName}
                 />
                 <div className="errorMsg">
                   {this.state.errors.ManufacturingDate}
@@ -215,6 +215,7 @@ class productform extends React.Component {
                   name="ExpireyDate"
                   value={this.state.field.ExpireyDate || ""}
                   onChange={this.handlechange}
+                  disabled={!this.state.field.ProductName}
                 />
                 <div className="errorMsg">{this.state.errors.ExpireyDate}</div>
               </FormGroup>

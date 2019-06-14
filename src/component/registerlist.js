@@ -8,23 +8,18 @@ import Row from "react-bootstrap/Row";
 import Pagination from 'react-bootstrap/Pagination';
 
 class registerlist extends React.Component {
-  state = {
-    data: [],
-    currentPage:0,
-    pageCount:0
-  };
-  async componentDidMount() {
-    var options = {
-      method: "POST",
-      url: "http://localhost:8000/post/list1",
-      data: {}
+  constructor(props){
+    super(props);
+    this.state = {
+      data: [],
+      currentPage:0,
+      pageCount:0
     };
-    const { data } = await axios(options);
-    this.setState({
-      data: data.data,
-      currentPage: data.currentPage,
-      pageCount: data.pageCount
-    });
+    //this.changePage=this.changePage.bind(this);
+  }
+ 
+  async componentDidMount() {
+    this.loadData();
   }
   async delete(id) {
     var options = {
@@ -37,6 +32,24 @@ class registerlist extends React.Component {
       data: this.state.data.filter(item => item.id !== id)
     });
   }
+  changePage(number){
+    this.loadData(number);
+  }
+
+  async loadData(page = 1) {
+    var options = {
+      method: "POST",
+      url: "http://localhost:8000/post/list1",
+      data: {page}
+    };
+    const { data } = await axios(options);
+    this.setState({
+      data: data.data,
+      currentPage: data.currentPage,
+      pageCount: data.pageCount
+    });
+  }
+ 
   render(){
     return (
       <div>
@@ -109,7 +122,10 @@ class registerlist extends React.Component {
     const items = [];
     for (let number = 1; number <= this.state.pageCount; number++) {
       items.push(
-        <Pagination.Item key={number} active={number === this.state.currentPage}>
+        <Pagination.Item
+          key={number}
+          active={number === this.state.currentPage}
+          onClick={() => this.changePage(number)}>
           {number}
         </Pagination.Item>,
       );

@@ -137,6 +137,9 @@ dfn {
 b,
 strong {
   font-weight: bolder;
+  margin-left: 129px;
+  font-size: 20px;
+
 }
 
 small {
@@ -208,6 +211,8 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  width: 400px;
+  margin-left: 117px;
 }
 
 svg:not(:root) {
@@ -2333,6 +2338,7 @@ select.form-control-lg:not([size]):not([multiple]),
 
 .form-check-label {
   margin-bottom: 0;
+  margin-left:50px;
 }
 
 .form-check-inline {
@@ -4835,7 +4841,8 @@ tbody.collapse.show {
 
 .list-pagination {
   display: flex;
-  padding-left: 0;
+  padding-left: 772px;
+  margin-top: 20px;
   list-style: none;
   border-radius: 0.25rem;
 }
@@ -4869,7 +4876,7 @@ tbody.collapse.show {
 }
 
 .page-item:first-child .page-link {
-  margin-left: 0;
+  margin-left: 28px;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
@@ -4884,8 +4891,8 @@ tbody.collapse.show {
   color: #ffffff;
   background-color: #9c27b0 !important;
   border-color: #9c27b0 !important;
-  margin-left:892px !important;
-  margin-top:8px !important;
+ /*  margin-left:892px !important;
+  margin-top:8px !important; */
 }
 
 .page-item.disabled .page-link {
