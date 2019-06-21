@@ -15,7 +15,6 @@ class registerlist extends React.Component {
       currentPage:0,
       pageCount:0
     };
-    //this.changePage=this.changePage.bind(this);
   }
  
   async componentDidMount() {
@@ -54,7 +53,7 @@ class registerlist extends React.Component {
     return (
       <div>
         <Row>
-          <Button variant="secondary" href="./registerform">
+          <Button variant="secondary" href="/registerform">
             Add Customer Details
           </Button>
         </Row>

@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import productform from "./component/productform";
-import productlist from "./component/productlist";
-import registerlist from "./component/registerlist";
-import registerform from "./component/registerform";
 import category from "./component/category";
+import Role from "./component/Role";
+import Rolelist from "./component/Rolelist";
+import Productdetail from "./component/Productdetail";
 import Header from "./routes/header";
 import Sidebar from "./routes/sidebar";
 import Footer from "./routes/footer";
 import Dashboard from "./routes/Dashboard";
+import showproduct from "./component/showproduct";
 import categorylist from './component/categorylist';
 import "../src/style/material-dashboard.css";
 import "../src/style/demo.css";
@@ -16,6 +16,7 @@ import login from "./component/login";
 import register from "./component/register";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
+
 
 class MainContainer extends React.Component {
   render() {
@@ -34,15 +35,16 @@ class MainContainer extends React.Component {
             <Sidebar />
             <div className="main-panel">
               <Switch>
-                <Route path="/productform" component={productform} />
-                <Route path="/productlist/edit/:id" component={productform} />
-                <Route path="/productlist" component={productlist} />
-                <Route path="/registerform" component={registerform} />
-                <Route path="/registerlist/edit/:id" component={registerform} />
-                <Route path="/registerlist" component={registerlist} />
-                <Route path="/category" component={category} />
-                <Route path="/categorylist" component={categorylist} />
-                <Route path="/" component={Dashboard} />
+                <Route path='/category' component={category} />
+                <Route path='/categorylist/edit/:id' component={category} />
+                <Route path='/categorylist' component={categorylist} />
+                <Route path='/Role' component={Role} />
+                <Route path='/Rolelist/edit/:id' component={Role} />
+                <Route path='/Rolelist' component={Rolelist} />
+                <Route path='/Productdetail' component={Productdetail} />
+                <Route path='/showproduct/edit/:id' component={Productdetail} />
+                <Route path='/showproduct' component={showproduct} />
+                <Route path='/' component={Dashboard} />
               </Switch>
             </div>
           </div>

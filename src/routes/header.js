@@ -12,11 +12,11 @@ export default class register extends React.Component {
   }
   render(){
     return (
-      <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light" style={{marginLeft:'2px',borderRadius:'20px'}}>
         <Navbar.Brand href="#home">Navbar</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="#home">Home</Nav.Link>
-          <Button onClick={this.logout}>Logout</Button>
+          <Button  onClick={this.logout}>Logout</Button>
         </Nav>
       </Navbar>
     );

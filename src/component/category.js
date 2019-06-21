@@ -7,13 +7,10 @@ import {  Input} from "reactstrap";
 import axios from 'axios';
 
 class category extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             fields: {
-                Parentcategory:'',
-                Categoryname: '',
-                Description: '',
                 Status: false
             },
             data:[],
@@ -39,32 +36,56 @@ class category extends React.Component{
             fields['Categoryname'] = "";
             fields['Description'] = "";
             fields['Status'] = "";
-            this.setState({fields});
+            this.setState({fields:fields});
+            console.log(this.state.fields.Parentcategory);
+           
         }
         var options={
             method:'POST',
             url:"http://localhost:8000/categories/save",
             data:{
-                id:this.state.fields.id || null, 
+                id:this.state.fields.id , 
                 Parentcategory:this.state.fields.Parentcategory,
                 Categoryname:this.state.fields.Categoryname,
                 Description:this.state.fields.Description,
                 Status:this.state.fields.Status
             } 
         }
-        const data = await axios(options);
-        console.log(data);
+         await axios(options);
+        
+        alert("category added");
+        window.location.href="/categorylist"; 
+       
     }
     async componentDidMount() {
-        var options = {
+         var option = {
           method: "POST",
           url: "http://localhost:8000/categories/list",
           data: {}
         };
-        const { data } = await axios(options);
+        const { data } = await axios(option);
         this.setState({
           data: data.result
-        });
+        }); 
+        if (this.props.match.params.id) {
+            var options = {
+              method: "POST",
+              url: "http://localhost:8000/categories/get",
+              data: {
+                id: this.props.match.params.id
+              }
+            };
+            const { data } = await axios(options);
+            this.setState({
+              fields: {
+                id: data.result.id,
+                Parentcategory:data.result.Parentcategory,
+                Categoryname:data.result.Categoryname,
+                Description:data.result.Description,
+                Status:data.result.Status
+              }
+            });
+          }
       }
     validateform(){
         let fields=this.state.fields;
@@ -92,7 +113,7 @@ class category extends React.Component{
                 <Col md={6}>
                     <FormGroup>
                         <Input type="select" name="Parentcategory"
-                            value={this.state.fields.Parentcategory }
+                            value={this.state.fields.Parentcategory || "" }
                             onChange={this.handleChange}>
                              <option>Parent category</option>
                             {this.state.data.map(item =>( 
@@ -110,7 +131,7 @@ class category extends React.Component{
                             <Form.Control
                                 type="text"
                                 name="Categoryname"
-                                value={this.state.fields.Categoryname} 
+                                value={this.state.fields.Categoryname || ""} 
                                 onChange={this.handleChange} />
                             <div className="errorMsg">{this.state.errors.Categoryname}</div>
                         </Form.Group>
@@ -123,7 +144,7 @@ class category extends React.Component{
                             <Form.Control
                                 type="text"
                                 name="Description" 
-                                value={this.state.fields.Description } 
+                                value={this.state.fields.Description || "" } 
                                 onChange={this.handleChange}/>
                             <div className="errorMsg">{this.state.errors.Description}</div>
                         </Form.Group>
@@ -135,7 +156,7 @@ class category extends React.Component{
                             <Form.Check
                                 bsPrefix="customcheckbox"
                                 name="Status"
-                                checked={this.state.fields.Status } 
+                                checked={this.state.fields.Status || ""} 
                                 onChange={this.handleChange}
                                 type="checkbox"
                                 label="Check me out" />

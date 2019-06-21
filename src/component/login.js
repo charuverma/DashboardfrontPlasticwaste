@@ -76,7 +76,6 @@ class login extends React.Component {
     return (
       <Container>
         <Form className="loginform" onSubmit={this.submit}>
-           <img src="./367-3670153_user-login-gif-images-for-login.png"></img>
            <p className="login">
             {" "}
             <b>Login Form</b>

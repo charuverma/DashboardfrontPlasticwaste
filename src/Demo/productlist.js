@@ -37,7 +37,7 @@ class productlist extends React.Component {
     return (
       <div>
         <Row>
-          <Button variant="secondary" href="./productform">
+          <Button variant="secondary" href="/productform">
             Add Details
           </Button>
         </Row>

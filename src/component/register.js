@@ -42,8 +42,7 @@ class register extends React.Component {
       fields["status"] = "";
       console.log(this.state.fields.status);
       this.setState({ fields: fields });
-      alert("Register Sucessfully");
-      console.log(this.state.field);
+    
     }
     //----------------------save api-------------------
     var options = {
@@ -59,6 +58,7 @@ class register extends React.Component {
       }
     };
     await axios(options);
+    alert("Register Sucessfully");
     //------------------
   }
 
@@ -138,7 +138,7 @@ class register extends React.Component {
             <FormGroup>
               <Label className="Input">Email</Label>
               <Input
-                type="text"
+                type="email"
                 className="Input"
                 name="emailid"
                 value={this.state.fields.emailid || ""}
@@ -154,7 +154,7 @@ class register extends React.Component {
               <Label className="Input">MobileNo</Label>
               <Input
                 className="Input"
-                type="text"
+                type="number"
                 name="mobileno"
                 value={this.state.fields.mobileno || ""}
                 onChange={this.handleChange}

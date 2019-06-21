@@ -9,16 +9,9 @@ export default props => {
               <p>Dashboard</p>
             </a>
           </li>
-         
-            <li className="nav-item ">
-              <a className="nav-link" href="./registerlist">
-                <p>Customer Details</p>
-              </a>
-            </li>
-      
           <li className="nav-item ">
-            <a className="nav-link" href="/productlist">
-              <p>Product List</p>
+            <a className="nav-link" href="/Rolelist">
+              <p>Role</p>
             </a>
           </li>
 
@@ -28,10 +21,11 @@ export default props => {
             </a>
           </li>
           <li className="nav-item ">
-            <a className="nav-link" href="./notifications.html">
-              <p>Notifications</p>
+            <a className="nav-link" href="/showproduct">
+              <p>Productlist</p>
             </a>
           </li>
+         
         </ul>
       </div>
     </div>
