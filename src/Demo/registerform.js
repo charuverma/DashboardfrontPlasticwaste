@@ -142,7 +142,7 @@ class registerform extends React.Component {
       data: data.result
      
     });
-
+    console.log(props);
     if (this.props.match.params.id) {
       var options = {
         method: "POST",

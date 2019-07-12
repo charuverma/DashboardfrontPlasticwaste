@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import category from "./component/category";
 import Role from "./component/Role";
 import Rolelist from "./component/Rolelist";
@@ -29,11 +31,15 @@ class MainContainer extends React.Component {
       );
     } else {
       return (
-        <div>
-          <div className="wrapper">
-            <Header />
-            <Sidebar />
-            <div className="main-panel">
+        <div container-fluid>
+          <Row className="wrapper">
+            <Col md={12}>
+              <Header />
+            </Col>
+            <Col md={3}>
+              <Sidebar />
+            </Col>
+            <Col md={9} className='main-panel'>
               <Switch>
                 <Route path='/category' component={category} />
                 <Route path='/categorylist/edit/:id' component={category} />
@@ -46,11 +52,11 @@ class MainContainer extends React.Component {
                 <Route path='/showproduct' component={showproduct} />
                 <Route path='/' component={Dashboard} />
               </Switch>
-            </div>
-          </div>
-          <div>
-            <Footer />
-          </div>
+            </Col>
+            <Col md={12}>
+              <Footer />
+            </Col>
+          </Row>
         </div>
       );
     }

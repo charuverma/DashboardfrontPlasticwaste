@@ -7,6 +7,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import "../style/productlist.css";
+
 class productlist extends React.Component {
   state = {
     data: []
@@ -70,7 +71,7 @@ class productlist extends React.Component {
                   <td>{item.ManufacturingDate}</td>
                   <td>{item.ExpireyDate}</td>
                   <td>{item.Size}</td>
-                  <td>{item.File}</td>
+                  <td><img src={item.File}/></td>
                   <td>
                     {" "}
                     <Link to={`/productlist/edit/${item.id}`}>Edit</Link>

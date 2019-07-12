@@ -620,6 +620,7 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+ margin-left:0px;
 }
 
 svg:not(:root) {
@@ -1031,8 +1032,8 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 0px;
+  margin-left: 9px;
 }
 
 .no-gutters {
@@ -2148,6 +2149,7 @@ pre code {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin-left:35px;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
@@ -3560,6 +3562,8 @@ tbody.collapse.show {
 
 .dropdown-menu.show {
   display: block;
+  margin-left: 500px;
+  width: 201px;
 }
 
 .dropdown-header {
@@ -4901,8 +4905,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
   z-index: 1;
   color: #ffffff;
-  background-color: #9c27b0 !important;
-  border-color: #9c27b0 !important;
+ /*  background-color: #9c27b0 !important;
+  border-color: #9c27b0 !important; */
  /*  margin-left:892px !important;
   margin-top:8px !important; */
 }
@@ -6389,6 +6393,7 @@ button.bg-dark:focus {
 
 .rounded-circle {
   border-radius: 50% !important;
+  width: 66px;
 }
 
 .rounded-0 {
@@ -13148,11 +13153,12 @@ fieldset[disabled] .form-group .form-control {
 
 .navbar .btn,
 .navbar .navbar-nav .nav-item .btn {
-  margin-top: 0;
   margin-bottom: 0;
-  margin-left: 788px;
+  margin-left: 452px;
   background-color: #9c27b0;
-    border-color: #9c27b0;
+  border-color: #9c27b0;
+  width: 89px;
+  height: 35px;
 }
 
 .navbar .navbar-toggler {
@@ -16176,7 +16182,12 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   padding: 0;
   width: 15px;
 }
-
+.Image{
+  width: 84px;
+}
+.button{
+width:100px;
+}
 .table .radio .icons,
 .table .checkbox .icons {
   position: relative;
@@ -16196,6 +16207,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   padding: 12px 8px;
   vertical-align: middle;
   border-color: #ddd;
+  border: 2px solid;
 }
 
 .table thead tr th {
@@ -16971,6 +16983,7 @@ label {
 .card[class*="bg-"],
 .card[class*="bg-"] .card-body {
   border-radius: 6px;
+  padding-left: 17px;
 }
 
 .card[class*="bg-"] h1 small,

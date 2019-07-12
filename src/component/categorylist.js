@@ -7,20 +7,15 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import "../style/productlist.css";
+import Pagination from 'react-bootstrap/Pagination';
 class categorylist extends React.Component {
   state = {
-    data: []
+    data: [],
+    currentPage:0,
+    pageCount:0
   };
   async componentDidMount() {
-    var options = {
-      method: "POST",
-      url: "http://localhost:8000/categories/list",
-      data: {}
-    };
-    const { data } = await axios(options);
-    this.setState({
-      data: data.result
-    });
+   this.loadData();
   }
   async delete(id) {
     var options = {
@@ -31,6 +26,22 @@ class categorylist extends React.Component {
     await axios(options);
     this.setState({
       data: this.state.data.filter(item => item.id !== id)
+    });
+  }
+  changePage(number){
+    this.loadData(number);
+  }
+  async loadData(page = 1) {
+    var options = {
+      method: "POST",
+      url: "http://localhost:8000/categories/list1",
+      data: {page}
+    };
+    const { data } = await axios(options);
+    this.setState({
+      data: data.data,
+      currentPage: data.currentPage,
+      pageCount: data.pageCount
     });
   }
   render() {
@@ -73,10 +84,27 @@ class categorylist extends React.Component {
               ))}
             </tbody>
           </Table>
+          {this.renderPaging()}
         </Row>
 
       </div>
     );
+  }
+  renderPaging(){
+    const items = [];
+    for (let number = 1; number <= this.state.pageCount; number++) {
+      items.push(
+        <Pagination.Item
+          key={number}
+          active={number === this.state.currentPage}
+          onClick={() => this.changePage(number)}>
+          {number}
+        </Pagination.Item>,
+      );
+    }
+    return(
+      <Pagination bsPrefix="list-pagination">{items}</Pagination>
+    ) 
   }
 }
 

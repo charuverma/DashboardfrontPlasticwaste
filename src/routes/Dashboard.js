@@ -1,14 +1,84 @@
 import React from "react";
-import Card from 'react-bootstrap/Card';
+import Carousel from 'react-bootstrap/Carousel';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+const baseurl="http://192.168.100.22:8000/public/uploads/File/1561548976705.gif";
 
 
 class Dashboard extends React.Component {
+ /*  constructor(props){
+    super(props)
+    console.log(props)
+    const img3= require('../assets/images/images.jpeg');
+    const img4= require('../assets/images/images (1).jpeg');
+    this.state = {
+      index:0,
+      imglist:[img3,img4]
+    }
+    console.log(this.state);
+    this.onclickback=this.onclickback.bind(this);
+    this.onclickForward=this.onclickForward.bind(this);
+  }
+  onclickForward(){
+    if(this.state.index + 1 === this.state.imglist.length){
+      this.setState({
+        index:0
+      })
+    }
+    else{
+      this.setState({
+        index:this.state.index + 1
+      })
+    }
+  }
+  onclickback(){
+    if(this.state.index - 1 === -1){
+      this.setState({
+        index:this.state.imglist.length - 1
+      })
+    }
+    else {
+      this.setState({
+        index:this.state.index - 1
+      })
+    }
+  } */
   render() {
     return (
-      <CardGroup>
+      
+     /*  <div>
+        <Image src={this.state.imglist[this.state.index]} alt=""/><br/>
+        <Button onClick={this.onclickback}>Back</Button>
+        <Button onClick={this.onclickForward} >Forward</Button>
+      </div> */
+       <Carousel style={{"width":'463px',"backgroundColor":"black","height":"320px","margin-left":"285px"}} >
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={baseurl}
+            alt="First slide"
+          />
+        </Carousel.Item>
+       {/*  <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="images (1).jpeg"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="images.jpeg"
+            alt="Third slide"
+          />
+        </Carousel.Item> */}
+      </Carousel> 
+      ///////////////////////////////////////////////////
+     /*  <CardGroup>
         <Row>
           <Col md={4}>
           <Card bg="warning" text="white">
@@ -50,7 +120,7 @@ class Dashboard extends React.Component {
           </Card>
           </Col>
         </Row>
-        </CardGroup>
+        </CardGroup> */
     )
   }
 }
